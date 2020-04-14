@@ -45,5 +45,9 @@ namespace BattleFieldDotNetCore
             get { return this.defenseStrenth; }
             set { this.defenseStrenth = value; }
         }
+        public bool Alive()
+        {
+                return (InitHealth > 0);
+        }
     }
 }
