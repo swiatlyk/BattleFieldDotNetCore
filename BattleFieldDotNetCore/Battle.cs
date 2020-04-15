@@ -4,28 +4,26 @@ namespace BattleFieldDotNetCore
 {
     public class Battle
     {
-        //correct access level
         public static void Start(Warrior warrior1, Warrior warrior2)
         {
             //implement random in fight
             while (warrior1.Alive() && warrior2.Alive())
             {
                 warrior1.Attack(warrior2);
-                if (warrior1.InitHealth > 0)
+                System.Console.WriteLine($"After attack {warrior2.WarriorName} has {warrior2.InitHealth} of life");
+                if (warrior2.Alive())
                 {
-                    warrior1.Attack(warrior2);
-                    if (warrior2.InitHealth > 0)
-                    {
-                        warrior2.Attack(warrior1);
-                    }
-                    else
-                    {
-                        Console.WriteLine($"{warrior1.WarriorName} wins!");
-                    }
+                    warrior2.Attack(warrior1);
+                    System.Console.WriteLine($"After attack {warrior1.WarriorName} has {warrior1.InitHealth} of life");
                 }
-                else
+                //check if warrior is alive
+                if (!warrior1.Alive())
                 {
-                    Console.WriteLine($"{warrior2.WarriorName} wins!");
+                    System.Console.WriteLine($"Warrior {warrior1.WarriorName} has died");
+                }
+                if (!warrior2.Alive())
+                {
+                    System.Console.WriteLine($"Warrior {warrior2.WarriorName} has died");
                 }
             }
         }

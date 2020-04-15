@@ -4,7 +4,7 @@ namespace BattleFieldDotNetCore
 {
     public class Warrior
     {
-         private int attackStrength;
+        private int attackStrength;
         private int defenseStrenth;
 
         public Warrior(string name, int health, int attack, int defence)
@@ -18,6 +18,10 @@ namespace BattleFieldDotNetCore
         public void Attack(Warrior warrior)
         {
             warrior.InitHealth = warrior.InitHealth - warrior.AttackStrength + this.DefenseStrenth;
+            if (warrior.InitHealth <= 0)
+            {
+                warrior.InitHealth = 0;
+            }
             Console.WriteLine($"{this.WarriorName} attacks {warrior.WarriorName}");
             Console.WriteLine($"{warrior.WarriorName} has {warrior.InitHealth} of life");
         }
@@ -47,7 +51,7 @@ namespace BattleFieldDotNetCore
         }
         public bool Alive()
         {
-                return (InitHealth > 0);
+            return (InitHealth > 0);
         }
     }
 }
