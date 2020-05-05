@@ -6,7 +6,14 @@ namespace BattleFieldDotNetCore
     {
         static void Main(string[] args)
         {
-            Battle.Start(new Warrior("Maximus", 1000, 190, 140), new Warrior("Kommodus", 1000, 180, 160));
+            Warrior warrior1 = new Warrior("Maximus", 300, 190, 140);
+            Dragon dragon1 = new Dragon("Smaug", 300, 190, 140);
+            warrior1.SayName();
+            dragon1.SayName();
+
+            Battle.Start(warrior1, dragon1);
+
+            //dodac nowe postacie krasnolud, elf, nekromanta....
 
             Console.ReadKey();
         }

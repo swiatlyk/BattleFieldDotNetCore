@@ -2,56 +2,16 @@ using System;
 
 namespace BattleFieldDotNetCore
 {
-    public class Warrior
+    public class Warrior : Character
     {
-        private int attackStrength;
-        private int defenseStrenth;
-
-        public Warrior(string name, int health, int attack, int defence)
+        public Warrior(string name, int health, int attack, int defence) : base(name, health, attack, defence)
         {
-            this.WarriorName = name;
-            this.InitHealth = health;
-            this.attackStrength = attack;
-            this.defenseStrenth = defence;
+            
         }
 
-        public void Attack(Warrior warrior)
+        public override void SayName()
         {
-            warrior.InitHealth = warrior.InitHealth - warrior.AttackStrength + this.DefenseStrenth;
-            if (warrior.InitHealth <= 0)
-            {
-                warrior.InitHealth = 0;
-            }
-            Console.WriteLine($"{this.WarriorName} attacks {warrior.WarriorName}");
-            Console.WriteLine($"{warrior.WarriorName} has {warrior.InitHealth} of life");
-        }
-
-        //Add propertys {get; set;}
-        public string WarriorName { get; set; }
-
-        public int InitHealth { get; set; }
-
-        public int AttackStrength
-        {
-            get { return this.attackStrength; }
-            set
-            {
-                if (value <= 0)
-                {
-                    Console.WriteLine("Health must be bigger then 0");
-                }
-                this.attackStrength = value;
-            }
-        }
-
-        public int DefenseStrenth
-        {
-            get { return this.defenseStrenth; }
-            set { this.defenseStrenth = value; }
-        }
-        public bool Alive()
-        {
-            return (InitHealth > 0);
+            Console.WriteLine($"I'm warrior. My name is {CharacterName}");
         }
     }
 }
